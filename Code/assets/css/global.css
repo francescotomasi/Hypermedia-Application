@@ -1,0 +1,35 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --header-button-color: #a30ffe;
+    --header-color: #8a7196;
+    --accent-color: #f0eaf3;
+}
+
+html,body,#__nuxt{
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: "Futura";
+    src: url('/public/fonts/Futura-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Futura";
+    src: url('/public/fonts/Futura-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Futura";
+    src: url('/public/fonts/Futura-MediumItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}

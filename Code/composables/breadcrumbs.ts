@@ -1,0 +1,1 @@
+export const breadcrumbs = () => useState<string[]>("breadcrumbs", () => []);

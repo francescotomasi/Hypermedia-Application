@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Person {
+  id          Int          @id @default(autoincrement())
+  name        String
+  description String
+  linkedin    String
+  twitter     String
+  instagram   String
+  facebook    String
+  experiences Experience[]
+  projects    Project[]
+}
+
+model Experience {
+  id          Int    @id @default(autoincrement())
+  person      Person @relation(fields: [personId], references: [id])
+  personId    Int
+  title       String
+  location    String
+  time        String
+  description String
+}
+
+model Project {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  longDes     String
+  leader      Person @relation(fields: [leaderId], references: [id])
+  leaderId    Int
+}
+
+model Service {
+  id           Int           @id @default(autoincrement())
+  name         String
+  description  String
+  sections     Section[]
+  words        String
+  testimonials Testimonial[]
+}
+
+model Section {
+  id        Int     @id @default(autoincrement())
+  service   Service @relation(fields: [serviceId], references: [id])
+  serviceId Int
+  section   String
+}
+
+model Testimonial {
+  personId  Int
+  service   Service @relation(fields: [serviceId], references: [id])
+  serviceId Int
+  role      String
+  words     String
+
+  @@id([personId, serviceId])
+}
+
+model TestimonialPerson {
+  id   Int    @id @default(autoincrement())
+  name String
+}
